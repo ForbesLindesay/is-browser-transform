@@ -1,6 +1,6 @@
 {
   "name": "is-browser-transform",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Static browserify transform for \"is-browser\" npm module",
   "keywords": [],
   "dependencies": {
