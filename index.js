@@ -25,25 +25,32 @@ module.exports = function (file, opts) {
 function transform(src, opts) {
   assert(typeof src === 'string', 'Source must be a string');
 
+  var changed = false;
+
   var ast = uglify.parse(src)
   ast.figure_out_scope();
   ast = ast.transform(new uglify.TreeTransformer(null, function (node) {
     var from = utils.isRequireResult(node);
     if (from === 'is-browser') {
+      changed = true;
       return new uglify.AST_True({});
     }
     if (from && opts.modules && Object.prototype.hasOwnProperty.call(opts.modules, from)) {
       var value = opts.modules[from];
       switch (typeof value) {
         case 'boolean':
+          changed = true;
           return value ? new uglify.AST_True({}) : new uglify.AST_False({});
         case 'number':
+          changed = true;
           return new uglify.AST_Number({value: value});
         case 'string':
+          changed = true;
           return new uglify.AST_String({value: value});
       }
     }
   }));
+  if (!changed) return src;
 
   var sourceMapsIn = /\/\/[#@] ?sourceMappingURL=data:application\/json;base64,([a-zA-Z0-9+\/]+)={0,2}$/.exec(src);
   var sourceMapOpts = {};
@@ -63,8 +70,8 @@ function transform(src, opts) {
 
   var map = convert.fromJSON(sourceMap);
 
-  if (opts.file) {
-    map.setProperty('sources', [opts.file]);
+  if (opts.filename) {
+    map.setProperty('sources', [opts.filename]);
   }
   map.setProperty('sourcesContent', sourceMapOpts.orig
     ? sourceMapOpts.orig.sourcesContent
