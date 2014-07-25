@@ -24,10 +24,12 @@ source.pipe(transform).pipe(dest);
 
 dest.on('close', function () {
   var m = require('./output/index.js');
+  assert(m.trickedYou === false);
   assert(m.isBrowser === true);
   assert(m.isServer === false);
   assert(m.staticString === 'Hello World');
   assert(m.staticNumber === 42);
   assert(m.staticTrue === true);
   assert(m.staticFalse === false);
+  console.log(fs.readFileSync(__dirname + '/output/index.js', 'utf8').split('//')[0]);
 });

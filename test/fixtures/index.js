@@ -1,9 +1,14 @@
 'use strict';
 
 var IS_BROWSER = require('is-browser');
+var IS_SERVER = !require('is-browser');
+
+var trickedYou = true;
+trickedYou = false;
+exports.trickedYou = trickedYou;
 
 exports.isBrowser = IS_BROWSER;
-exports.isServer = !require('is-browser');
+exports.isServer = IS_SERVER;
 
 exports.staticString = require('static-string');
 exports.staticNumber = require('static-number');

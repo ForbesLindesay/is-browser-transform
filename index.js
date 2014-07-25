@@ -30,7 +30,7 @@ function transform(src, opts) {
   var ast = uglify.parse(src)
   ast.figure_out_scope();
   ast = ast.transform(new uglify.TreeTransformer(null, function (node) {
-    var from = utils.isRequireResult(node);
+    var from = utils.isRequire(node);
     if (from === 'is-browser') {
       changed = true;
       return new uglify.AST_True({});
@@ -49,6 +49,17 @@ function transform(src, opts) {
           return new uglify.AST_String({value: value});
       }
     }
+  }));
+  ast.figure_out_scope();
+  var walker = new uglify.TreeWalker(function (node) {
+    if (node.TYPE === 'SymbolRef') {
+      node.parent = walker.parent();
+    }
+  });
+  ast.walk(walker);
+  ast = ast.transform(new uglify.TreeTransformer(null, function (node) {
+    var value = utils.isConstant(node);
+    if (value) return value;
   }));
   if (!changed) return src;
 
