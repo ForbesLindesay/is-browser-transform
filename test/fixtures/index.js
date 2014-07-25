@@ -6,6 +6,9 @@ var IS_SERVER = !require('is-browser');
 var trickedYou = true;
 trickedYou = false;
 exports.trickedYou = trickedYou;
+var trickedAgain = 0;
+trickedAgain++;
+exports.trickedAgain = trickedAgain;
 
 exports.isBrowser = IS_BROWSER;
 exports.isServer = IS_SERVER;

@@ -25,6 +25,7 @@ source.pipe(transform).pipe(dest);
 dest.on('close', function () {
   var m = require('./output/index.js');
   assert(m.trickedYou === false);
+  assert(m.trickedAgain === 1);
   assert(m.isBrowser === true);
   assert(m.isServer === false);
   assert(m.staticString === 'Hello World');
