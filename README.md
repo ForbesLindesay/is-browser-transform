@@ -3,7 +3,7 @@
 Static browserify transform for "is-browser" npm module.  Perfect to run just before the [uglifyify](https://github.com/hughsk/uglifyify) transform and in conjunction with the [envify](https://github.com/hughsk/envify) transform.
 
 [![Build Status](https://img.shields.io/travis/ForbesLindesay/is-browser-transform/master.svg)](https://travis-ci.org/ForbesLindesay/is-browser-transform)
-[![Dependency Status](https://img.shields.io/gemnasium/ForbesLindesay/is-browser-transform.svg)](https://gemnasium.com/ForbesLindesay/is-browser-transform)
+[![Dependency Status](https://img.shields.io/david/ForbesLindesay/is-browser-transform.svg)](https://david-dm.org/ForbesLindesay/is-browser-transform)
 [![NPM version](https://img.shields.io/npm/v/is-browser-transform.svg)](https://www.npmjs.org/package/is-browser-transform)
 
 ## Installation
