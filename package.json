@@ -4,7 +4,7 @@
   "description": "Static browserify transform for \"is-browser\" npm module",
   "keywords": [],
   "dependencies": {
-    "convert-source-map": "^0.4.0",
+    "convert-source-map": "^1.4.0",
     "uglify-js": "^2.4.15"
   },
   "devDependencies": {

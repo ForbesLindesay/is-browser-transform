@@ -1,5 +1,7 @@
 # is-browser-transform
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/ForbesLindesay/is-browser-transform.svg)](https://greenkeeper.io/)
+
 Static browserify transform for "is-browser" npm module.  Perfect to run just before the [uglifyify](https://github.com/hughsk/uglifyify) transform and in conjunction with the [envify](https://github.com/hughsk/envify) transform.
 
 [![Build Status](https://img.shields.io/travis/ForbesLindesay/is-browser-transform/master.svg)](https://travis-ci.org/ForbesLindesay/is-browser-transform)
